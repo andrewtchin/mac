@@ -59,3 +59,9 @@ homebrew_cask_apps:
   - vlc
   - vmware-fusion
   - xquartz
+
+homedir_directories:
+  - ~/code
+  - ~/code/github.com
+  - ~/code/gitlab.com
+  - ~/code/vmware
