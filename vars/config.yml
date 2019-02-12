@@ -1,0 +1,61 @@
+---
+host_name: CORPORATE
+
+homebrew_install: true
+homebrew_cask_install: true
+homebrew_cask_fonts_install: false
+homebrew_upgrade_all_packages: false
+
+homebrew_taps:
+  - homebrew/cask
+  - homebrew/cask-fonts
+
+homebrew_installed_packages:
+  - autojump
+  - awscli
+  - bash
+  - bash-completion
+  - coreutils
+  - curl
+  - docker-completion
+  - exa
+  - git
+  - gnupg
+  - jq
+  - kubectl
+  - kubernetes-helm
+  - openssl
+  - pipenv
+  - pstree
+  - pyenv
+  - python
+  - rcm
+  - ripgrep
+  - terraform
+  - the_silver_searcher
+  - tree
+  - vault
+  - vim
+  - watch
+  - wget
+  - zsh
+
+homebrew_cask_apps:
+  - 1password
+  - atom
+  - calibre
+  - docker
+  - firefox
+  - flux
+  - gas-mask
+  - google-chrome
+  - google-cloud-sdk
+  - iterm2
+  - little-snitch
+  - minikube
+  - slack
+  - tunnelblick
+  - visual-studio-code
+  - vlc
+  - vmware-fusion
+  - xquartz
