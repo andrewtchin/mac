@@ -25,6 +25,7 @@ ansible-playbook -vvv playbooks/provision.yml --ask-become-pass --extra-vars=@va
 ansible-playbook -vvv playbooks/security.yml --ask-become-pass
 
 # Install dotfiles
+chsh -s /bin/zsh
 brew tap thoughtbot/formulae
 brew install rcm
 curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
