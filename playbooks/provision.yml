@@ -5,4 +5,6 @@
 
   roles:
     - homebrew
+    - uninstall-apps
+    - customize
     - { role: system-config, hostname: "{{ host_name }}" }

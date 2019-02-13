@@ -1,9 +1,9 @@
 ---
-- name: Clone vundle git repo
-  git: repo=https://github.com/gmarik/Vundle.vim.git dest="~/.vim/bundle/Vundle.vim"
-
-- name: Install vim plugins
-  command: vim +PluginInstall +qall
+#- name: Clone vundle git repo
+#  git: repo=https://github.com/gmarik/Vundle.vim.git dest="~/.vim/bundle/Vundle.vim"
+#
+#- name: Install vim plugins
+#  command: vim +PluginInstall +qall
 
 - name: Install iterm2 plist
   copy: src=com.googlecode.iterm2.plist dest="~/Library/Preferences/com.googlecode.iterm2.plist" mode=0600
