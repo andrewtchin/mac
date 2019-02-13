@@ -9,6 +9,8 @@ cd mac
 
 # Install XCode CLI, pip, and upstream ansible
 ./bootstrap.sh
+
+source ansible/hacking/env-setup
 ```
 
 ## Create your `config`
