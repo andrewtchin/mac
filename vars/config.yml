@@ -19,11 +19,13 @@ homebrew_installed_packages:
   - curl
   - docker-completion
   - exa
+  - gcc
   - git
   - gnupg
   - jq
   - kubectl
   - kubernetes-helm
+  - maven
   - openssl
   - pipenv
   - pstree
