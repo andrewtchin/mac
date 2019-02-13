@@ -23,6 +23,11 @@ ansible-playbook -vvv playbooks/provision.yml --ask-become-pass --extra-vars=@va
 # Security
 # This will configure extra security features of MacOS
 ansible-playbook -vvv playbooks/security.yml --ask-become-pass
+
+# Install dotfiles
+brew tap thoughtbot/formulae
+brew install rcm
+curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
 ```
 
 ## Extras
