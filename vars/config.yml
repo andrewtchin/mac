@@ -60,7 +60,7 @@ homebrew_cask_apps:
   - xquartz
 
 homedir_directories:
-  - ~/code
-  - ~/code/github.com
-  - ~/code/gitlab.com
-  - ~/code/vmware
+  - "/Users/{{ ansible_user_id }}/code"
+  - "/Users/{{ ansible_user_id }}/code/github.com"
+  - "/Users/{{ ansible_user_id }}/code/gitlab.com"
+  - "/Users/{{ ansible_user_id }}/code/vmware"
