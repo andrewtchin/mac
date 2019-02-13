@@ -1,21 +1,21 @@
 # macbook
 
-## Initial configuration
+## Usage
 
 ```bash
 # Clone the repo
 git clone git@github.com:andrewtchin/mac.git
 cd mac
 
-# Install XCode CLI, pip, and upstream ansible
+# Install XCode CLI, pip, and upstream Ansible, run provision.yml
 ./bootstrap.sh
-
-source ansible/hacking/env-setup
 ```
 
-## Create your `config`
+## Running standalone playbook
 
 ```bash
+source ansible/hacking/env-setup
+
 # Provision
 # This will provision MacOS, configure better defaults, and remove unused applications
 ansible-playbook -vvv playbooks/provision.yml --ask-become-pass --extra-vars=@vars/config.yml
