@@ -20,4 +20,4 @@
     state: directory
     mode: 0700
   with_items:
-    - {{ homedir_directories }}
+    - "{{ homedir_directories }}"
