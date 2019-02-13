@@ -12,12 +12,12 @@
     - "/Applications/Game Center.app"
     - "/Applications/Garageband.app"
     - "/Applications/Maps.app"
-    = "/Applications/Photo Booth.app"
+    - "/Applications/Photo Booth.app"
     - "/Applications/Photos.app"
     - "/Applications/Reminders.app"
     - "/Applications/Stickies.app"
     - "/Applications/iBooks.app"
-    = "/Applications/iPhoto.app"
+    - "/Applications/iPhoto.app"
 
 - name: Remove files
   become: yes
