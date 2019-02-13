@@ -29,7 +29,6 @@ homebrew_installed_packages:
   - pstree
   - pyenv
   - python
-  - rcm
   - ripgrep
   - terraform
   - the_silver_searcher
