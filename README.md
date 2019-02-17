@@ -29,6 +29,9 @@ chsh -s /bin/zsh
 brew tap thoughtbot/formulae
 brew install rcm
 curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
+
+# Setup Gas Mask
+https://github.com/StevenBlack/hosts
 ```
 
 ## Extras
