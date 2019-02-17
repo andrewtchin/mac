@@ -42,15 +42,14 @@ homebrew_installed_packages:
 
 homebrew_cask_apps:
   - 1password
-  - atom
   - docker
   - firefox
   - flux
   - gas-mask
   - google-cloud-sdk
   - iterm2
-  - little-snitch
   - minikube
+  - postman
   - slack
   - tunnelblick
   - visual-studio-code
