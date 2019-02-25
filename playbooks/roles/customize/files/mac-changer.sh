@@ -24,4 +24,3 @@ NEW_MAC=$(valid_mac)
 ifconfig en0 ether $NEW_MAC && ifconfig en0 down && ifconfig en0 up
 
 echo "Mac changed to $NEW_MAC"
-

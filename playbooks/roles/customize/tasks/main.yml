@@ -12,7 +12,7 @@
   shell: defaults read com.googlecode.iterm2
 
 - name: Install mac-changer.sh
-  copy: src=com.googlecode.iterm2.plist dest="/usr/local/bin" mode=0755
+  copy: src=mac_changer.sh dest="/usr/local/bin" mode=0755
 
 - name: Make directories in home
   file:

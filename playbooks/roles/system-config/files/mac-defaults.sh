@@ -147,6 +147,11 @@ echo ""
 echo "Disable sound effect on boot"
 sudo nvram SystemAudioVolume=" "
 
+echo ""
+echo "Setting clock"
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+
 
 ###############################################################################
 # Photos                                                                      #
@@ -229,6 +234,8 @@ else
     screenshot_location="${HOME}/${screenshot_location}"
   fi
 fi
+
+mkdir -p "${screenshot_location}"
 echo "Setting location to ${screenshot_location}."
 defaults write com.apple.screencapture location -string "${screenshot_location}"
 
@@ -349,6 +356,10 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 echo ""
 echo "Make Hidden App Icons Translucent in the Dock"
 defaults write com.apple.Dock showhidden -bool true
+
+echo ""
+echo "Do not show recents"
+defaults write com.apple.dock show-recents -bool FALSE
 
 
 ###############################################################################
