@@ -631,9 +631,16 @@ echo "Disable continuous spell checking in Messages.app."
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 
+
+
 ###############################################################################
 # Kill affected applications
 ###############################################################################
+
+echo ""
+echo "No VLC recents"
+defaults write org.videolan.vlc NSRecentDocumentsLimit 0
+defaults write org.videolan.vlc.LSSharedFileList RecentDocuments -dict-add MaxAmount 0
 
 echo ""
 cecho "Done!" $cyan
