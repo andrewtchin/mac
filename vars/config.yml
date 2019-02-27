@@ -4,7 +4,7 @@ host_name: CORPORATE
 homebrew_install: true
 homebrew_cask_install: true
 homebrew_cask_fonts_install: false
-homebrew_upgrade_all_packages: false
+homebrew_upgrade_all_packages: true
 
 homebrew_taps:
   - homebrew/cask
@@ -47,6 +47,7 @@ homebrew_cask_apps:
   - flux
   - gas-mask
   - google-cloud-sdk
+  - gpg-suite
   - iterm2
   - minikube
   - postman

@@ -152,6 +152,14 @@ echo "Setting clock"
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 
+echo ""
+echo "Prevent iTunes from opening automatically when devices are plugged in"
+defaults write com.apple.iTunesHelper ignore-devices 1
+
+echo ""
+echo "Show battery percentage"
+defaults write com.apple.menuextra.battery ShowPercent YES
+
 
 ###############################################################################
 # Photos                                                                      #
@@ -169,10 +177,10 @@ echo ""
 echo "Disable the sudden motion sensor. (it's not useful for SSDs/current MacBooks)"
 sudo pmset -a sms 0
 
-echo ""
-echo "Speeding up wake from sleep to 24 hours from an hour"
+# echo ""
+# echo "Speeding up wake from sleep to 24 hours from an hour"
 # http://www.cultofmac.com/221392/quick-hack-speeds-up-retina-macbooks-wake-from-sleep-os-x-tips/
-sudo pmset -a standbydelay 86400
+# sudo pmset -a standbydelay 86400
 
 
 ################################################################################
@@ -187,18 +195,18 @@ echo ""
 echo "Enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# echo ""
-# echo "Disable auto-correct? (y/n)"
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+echo ""
+echo "Disable autocorrect"
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# echo ""
-# echo "Setting trackpad & mouse speed to a reasonable number"
-# defaults write -g com.apple.trackpad.scaling 2
-# defaults write -g com.apple.mouse.scaling 2.5
+echo ""
+echo "Setting trackpad & mouse speed to a reasonable number"
+defaults write -g com.apple.trackpad.scaling 2
+defaults write -g com.apple.mouse.scaling 2.5
 
-# echo ""
-# echo "Setting scroll direction to classic"
-# defaults write -g com.apple.swipescrolldirection -bool FALSE
+echo ""
+echo "Setting scroll direction to classic"
+defaults write -g com.apple.swipescrolldirection -bool FALSE
 
 echo ""
 echo "Turn off keyboard illumination when computer is not used for 5 minutes"
@@ -207,6 +215,31 @@ defaults write com.apple.BezelServices kDimTime -int 300
 echo ""
 echo "Disable keyboard from automatically adjusting backlight brightness in low light."
 sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Keyboard Enabled" -bool false
+
+echo ""
+echo "Set a blazingly fast keyboard repeat rate"
+defaults write NSGlobalDomain KeyRepeat -int 0
+
+echo ""
+echo "Disable IR"
+defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
+
+echo ""
+echo "Show Bluetooth menu"
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true
+
+
+###############################################################################
+# Network
+###############################################################################
+
+echo ""
+echo "Disable internet sharing"
+defaults write /Library/Preferences/SystemConfiguration/com.apple.nat NAT -dict-add Enabled -bool false
+
+echo ""
+echo "Disable wake on network access"
+systemsetup -setwakeonnetworkaccess off
 
 
 ###############################################################################
@@ -266,6 +299,10 @@ defaults write com.apple.Finder AppleShowAllFiles -bool true
 echo ""
 echo "Show all filename extensions in Finder by default."
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+echo ""
+echo "Show folders first"
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 echo ""
 echo "Show status bar in Finder by default."
@@ -361,6 +398,10 @@ echo ""
 echo "Do not show recents"
 defaults write com.apple.dock show-recents -bool FALSE
 
+echo ""
+echo "Disable Notification Center and remove the menu bar icon"
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+
 
 ###############################################################################
 # Mac App Store                                                               #
@@ -436,11 +477,6 @@ echo "Enabling the Develop menu and the Web Inspector in Safari"
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-
-
-# Privacy: don’t send search queries to Apple
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
 # Press Tab to highlight each item on a web page
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
@@ -615,7 +651,7 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 
 ###############################################################################
-# Messages                                                                    #
+# Messages
 ###############################################################################
 
 echo ""
@@ -631,6 +667,13 @@ echo "Disable continuous spell checking in Messages.app."
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 
+###############################################################################
+# Filevault
+###############################################################################
+
+echo ""
+echo "Destroy filevault key on standby"
+pmset -a destroyfvkeyonstandby 1 ; pmset -a hibernatemode 25 ; pmset -a powernap 0 ; pmset -a standby 0 ; pmset -a standbydelay 0; pmset -a autopoweroff 0
 
 
 ###############################################################################
