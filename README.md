@@ -35,6 +35,8 @@ https://github.com/StevenBlack/hosts
 
 # Enable U2F
 Firefox about:config - enable security.webauth.u2f
+
+# Install Little Snitch and Micro Snitch
 ```
 
 ## Extras
