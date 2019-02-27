@@ -161,6 +161,7 @@ echo "Show battery percentage"
 defaults write com.apple.menuextra.battery ShowPercent YES
 
 
+
 ###############################################################################
 # Photos                                                                      #
 ###############################################################################
@@ -227,6 +228,10 @@ defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEna
 echo ""
 echo "Show Bluetooth menu"
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true
+
+echo ""
+echo "Show Volume menu"
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 
 
 ###############################################################################
