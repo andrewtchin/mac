@@ -9,6 +9,9 @@ Set firmware password https://support.apple.com/en-au/HT204455
 ## Usage
 
 ```bash
+# Install developer tools
+xcode-select --install
+
 # Clone the repo
 git clone git@github.com:andrewtchin/mac.git
 cd mac
