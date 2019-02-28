@@ -74,6 +74,18 @@ defaults write /Library/Preferences/com.apple.alf globalstate -int 2
 # enable firewall stealth mode (don't respond to ping, etc)
 /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
 
+# enable logging
+/usr/libexec/ApplicationFirewall/socketfilterfw --setloggingmode on
+
+# Disabled allow signed built-in applications automatically
+/usr/libexec/ApplicationFirewall/socketfilterfw --setallowsigned off
+
+# Disabled allow signed downloaded applications automatically
+/usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
+
+# restart firewall
+pkill -HUP socketfilterfw
+
 # disable bonjour advertising service
 defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 

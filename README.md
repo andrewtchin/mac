@@ -1,5 +1,11 @@
 # macbook
 
+## Before
+
+Reset NVRAM https://support.apple.com/en-us/HT204063
+
+Set firmware password https://support.apple.com/en-au/HT204455
+
 ## Usage
 
 ```bash
@@ -36,7 +42,8 @@ https://github.com/StevenBlack/hosts
 # Enable U2F
 Firefox about:config - enable security.webauth.u2f
 
-# Install Little Snitch and Micro Snitch
+# Check config
+https://github.com/kristovatlas/osx-config-check
 ```
 
 ## Extras

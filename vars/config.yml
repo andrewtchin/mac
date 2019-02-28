@@ -1,5 +1,6 @@
 ---
 host_name: CORPORATE
+lock_screen_message: ""
 
 homebrew_install: true
 homebrew_cask_install: true
@@ -49,6 +50,7 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - gpg-suite
   - iterm2
+  - little-snitch
   - minikube
   - postman
   - slack
@@ -64,3 +66,4 @@ homedir_directories:
   - "/Users/{{ ansible_user_id }}/code/github.com"
   - "/Users/{{ ansible_user_id }}/code/gitlab.com"
   - "/Users/{{ ansible_user_id }}/code/vmware"
+  - "/Users/{{ ansible_user_id }}/code/gitlab.eng.vmware.com"

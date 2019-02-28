@@ -4,4 +4,4 @@
   gather_facts: yes
 
   roles:
-    - { role: system-config, hostname: "{{ host_name }}" }
+    - { role: system-config, hostname: "{{ host_name }}", lock_screen_message: "{{ lock_screen_message }}" }

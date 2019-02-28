@@ -5,11 +5,12 @@
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
 if [ $# -eq 0 ]; then
-  echo "usage: $0 <hostname>"
+  echo "usage: $0 <hostname> <lock_screen_message>"
   exit 1;
-else
-  COMPUTER_NAME=$1
 fi
+
+COMPUTER_NAME="$1"
+LOCK_SCREEN_MESSAGE="$2"
 
 CURRENT_USER="$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')"
 
@@ -50,6 +51,10 @@ sudo scutil --set ComputerName $COMPUTER_NAME
 sudo scutil --set HostName $COMPUTER_NAME
 sudo scutil --set LocalHostName $COMPUTER_NAME
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
+
+echo ""
+echo "Setting lock screen message"
+sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "$LOCK_SCREEN_MESSAGE"
 
 echo ""
 echo "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed before."
@@ -160,6 +165,45 @@ echo ""
 echo "Show battery percentage"
 defaults write com.apple.menuextra.battery ShowPercent YES
 
+echo ""
+echo "Disable thumbnail cache"
+qlmanage -r disablecache
+
+echo ""
+echo "Disable dictionary suggestions"
+rm -rfv "~/Library/LanguageModeling/*" "~/Library/Spelling/*" "~/Library/Suggestions/*"
+chmod -R 000 ~/Library/LanguageModeling ~/Library/Spelling ~/Library/Suggestions
+chflags -R uchg ~/Library/LanguageModeling ~/Library/Spelling ~/Library/Suggestions
+
+echo ""
+echo "Disable QuickLook"
+rm -rfv "~/Library/Application Support/Quick Look/*"
+chmod -R 000 "~/Library/Application Support/Quick Look"
+chflags -R uchg "~/Library/Application Support/Quick Look"
+
+echo ""
+echo "Disable saved application state"
+rm -rfv "~/Library/Saved Application State/*"
+rm -rfv "~/Library/Containers/<APPNAME>/Saved Application State"
+chmod -R 000 "~/Library/Saved Application State/"
+chmod -R 000 "~/Library/Containers/<APPNAME>/Saved Application State"
+chflags -R uchg "~/Library/Saved Application State/"
+chflags -R uchg "~/Library/Containers/<APPNAME>/Saved Application State"
+
+echo ""
+echo "Disable autosave metadata"
+rm -rfv "~/Library/Containers/<APP>/Data/Library/Autosave Information"
+rm -rfv "~/Library/Autosave Information"
+chmod -R 000 "~/Library/Containers/<APP>/Data/Library/Autosave Information"
+chmod -R 000 "~/Library/Autosave Information"
+chflags -R uchg "~/Library/Containers/<APP>/Data/Library/Autosave Information"
+chflags -R uchg "~/Library/Autosave Information"
+
+echo ""
+echo "Disable Siri analytics"
+rm -rfv ~/Library/Assistant/SiriAnalytics.db
+chmod -R 000 ~/Library/Assistant/SiriAnalytics.db
+chflags -R uchg ~/Library/Assistant/SiriAnalytics.db
 
 
 ###############################################################################
