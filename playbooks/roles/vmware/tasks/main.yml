@@ -1,0 +1,43 @@
+---
+- name: Install VMware files
+  copy:
+    src: {{ item }}
+    dest: - "/Users/{{ ansible_user_id }}/code/vmware/"
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: 0600
+  with_items:
+    - p4.client
+
+- name: Install VMware files
+  copy:
+    src: {{ item }}
+    dest: - "/Users/{{ ansible_user_id }}/code/vmware/"
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: 0700
+  with_items:
+    - sandbox.sh
+    - update_toolchain.sh
+
+- name: Install homebrew packages
+  homebrew:
+    name: "{{ vmware_homebrew_installed_packages }}"
+    state: present
+  when: homebrew_install|bool
+
+- name: Install homebrew-cask packages
+  homebrew_cask:
+    name: "{{ vmware_homebrew_cask_apps }}"
+    state: present
+  when: homebrew_cask_install|bool
+
+- name: Upgrade homebrew packages (if configured).
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: Upgrade homebrew-cask packages (if configured).
+  homebrew_cask:
+    update_homebrew: yes
+    upgrade_all: yes

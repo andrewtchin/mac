@@ -18,6 +18,9 @@ cd mac
 
 # Install XCode CLI, pip, and upstream Ansible, run provision.yml
 ./bootstrap.sh
+
+# To include work playbook
+./bootstrap.sh --vmware
 ```
 
 ## Running standalone playbook
@@ -49,14 +52,22 @@ Firefox about:config - enable security.webauth.u2f
 https://github.com/kristovatlas/osx-config-check
 ```
 
-## Extras
-
-* To configure *just* system defaults
+## Defaults only
 
 ```bash
 ansible-playbook -vvv playbooks/defaults.yml --ask-become-pass --extra-vars=@vars/config.yml
 ```
 
-## Notes
+## Security
 
-* MacOS hardening according to CIS. The security playbook will apply a custom configuration of security-related OS configuration.  Its core is based off of [CIS for macOS Sierra](https://github.com/jamfprofessionalservices/CIS-for-macOS-Sierra-CP).
+MacOS hardening according to CIS. The security playbook will apply a custom configuration of security-related OS configuration.
+
+Its core is based off of [CIS for macOS Sierra](https://github.com/jamfprofessionalservices/CIS-for-macOS-Sierra-CP).
+
+```bash
+ansible-playbook -vvv playbooks/security.yml --ask-become-pass
+```
+
+# TODO
+
+- Install `p4`

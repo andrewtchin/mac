@@ -65,5 +65,6 @@ homedir_directories:
   - "/Users/{{ ansible_user_id }}/code"
   - "/Users/{{ ansible_user_id }}/code/github.com"
   - "/Users/{{ ansible_user_id }}/code/gitlab.com"
-  - "/Users/{{ ansible_user_id }}/code/vmware"
   - "/Users/{{ ansible_user_id }}/code/gitlab.eng.vmware.com"
+  - "/Users/{{ ansible_user_id }}/code/gitlab.chinter.net"
+  - "/Users/{{ ansible_user_id }}/code/vmware"
