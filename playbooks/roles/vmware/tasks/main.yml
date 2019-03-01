@@ -2,7 +2,7 @@
 - name: Install VMware files
   copy:
     src: {{ item }}
-    dest: - "/Users/{{ ansible_user_id }}/code/vmware/"
+    dest: "/Users/{{ ansible_user_id }}/code/vmware/"
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0600
@@ -12,7 +12,7 @@
 - name: Install VMware files
   copy:
     src: {{ item }}
-    dest: - "/Users/{{ ansible_user_id }}/code/vmware/"
+    dest: "/Users/{{ ansible_user_id }}/code/vmware/"
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0700
@@ -24,7 +24,7 @@
   copy:
     become: yes
     src: {{ item }}
-    dest: - "/usr/local/bin/"
+    dest: "/usr/local/bin/"
     owner: "{{ ansible_user_id }}"
     group: admin
     mode: 0755
