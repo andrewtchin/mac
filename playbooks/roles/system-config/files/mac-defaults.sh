@@ -172,42 +172,42 @@ qlmanage -r disablecache
 
 echo ""
 echo "Disable dictionary suggestions"
-rm -rfv "~/Library/LanguageModeling/*" "~/Library/Spelling/*" "~/Library/Suggestions/*"
-mkdir -p "~/Library/LanguageModeling/*" "~/Library/Spelling/*" "~/Library/Suggestions/*"
-chmod -R 000 ~/Library/LanguageModeling ~/Library/Spelling ~/Library/Suggestions
-chflags -R uchg ~/Library/LanguageModeling ~/Library/Spelling ~/Library/Suggestions
+rm -rfv "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
+mkdir -p "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
+chmod -R 000 /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
+chflags -R uchg /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
 
 echo ""
 echo "Disable QuickLook"
-rm -rfv "~/Library/Application Support/Quick Look/*"
-mkdir -p "~/Library/Application Support/Quick Look/*"
-chmod -R 000 "~/Library/Application Support/Quick Look"
-chflags -R uchg "~/Library/Application Support/Quick Look"
+rm -rfv "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
+mkdir -p "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
+chmod -R 000 "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
+chflags -R uchg "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
 
 echo ""
 echo "Disable saved application state"
-rm -rfv "~/Library/Saved Application State/*"
-rm -rfv "~/Library/Containers/<APPNAME>/Saved Application State"
-mkdir -p "~/Library/Saved Application State/*"
-mkdir -p "~/Library/Containers/<APPNAME>/Saved Application State"
-chmod -R 000 "~/Library/Saved Application State/"
-chmod -R 000 "~/Library/Containers/<APPNAME>/Saved Application State"
-chflags -R uchg "~/Library/Saved Application State/"
-chflags -R uchg "~/Library/Containers/<APPNAME>/Saved Application State"
+rm -rfv "/Users/$CURRENT_USER/Library/Saved Application State/*"
+rm -rfv "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
+mkdir -p "/Users/$CURRENT_USER/Library/Saved Application State/*"
+mkdir -p "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
+chmod -R 000 "/Users/$CURRENT_USER/Library/Saved Application State/"
+chmod -R 000 "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
+chflags -R uchg "/Users/$CURRENT_USER/Library/Saved Application State/"
+chflags -R uchg "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
 
 echo ""
 echo "Disable autosave metadata"
-rm -rfv "~/Library/Autosave Information"
-mkdir -p "~/Library/Autosave Information"
-chmod -R 000 "~/Library/Autosave Information"
-chflags -R uchg "~/Library/Autosave Information"
+rm -rfv "/Users/$CURRENT_USER/Library/Autosave Information"
+mkdir -p "/Users/$CURRENT_USER/Library/Autosave Information"
+chmod -R 000 "/Users/$CURRENT_USER/Library/Autosave Information"
+chflags -R uchg "/Users/$CURRENT_USER/Library/Autosave Information"
 
 echo ""
 echo "Disable Siri analytics"
-rm -rfv ~/Library/Assistant/SiriAnalytics.db
-mkdir -p ~/Library/Assistant/SiriAnalytics.db
-chmod -R 000 ~/Library/Assistant/SiriAnalytics.db
-chflags -R uchg ~/Library/Assistant/SiriAnalytics.db
+rm -rfv /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+mkdir -p /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+chmod -R 000 /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+chflags -R uchg /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
 
 echo ""
 echo "Disable VLC recents"
