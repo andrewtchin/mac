@@ -59,6 +59,7 @@ homebrew_cask_apps:
   - vlc
   - vmware-fusion
   - xquartz
+  - yujitach-menumeters
   - zoomus
 
 homedir_directories:
