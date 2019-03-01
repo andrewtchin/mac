@@ -21,8 +21,8 @@
     - update_toolchain.sh
 
 - name: Install p4
+  become: yes
   copy:
-    become: yes
     src: "{{ item }}"
     dest: "/usr/local/bin/"
     owner: "{{ ansible_user_id }}"
