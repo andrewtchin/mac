@@ -20,6 +20,17 @@
     - sandbox.sh
     - update_toolchain.sh
 
+- name: Install p4
+  copy:
+    become: yes
+    src: {{ item }}
+    dest: - "/usr/local/bin/"
+    owner: "{{ ansible_user_id }}"
+    group: admin
+    mode: 0755
+  with_items:
+    - p4
+
 - name: Install homebrew packages
   homebrew:
     name: "{{ vmware_homebrew_installed_packages }}"
