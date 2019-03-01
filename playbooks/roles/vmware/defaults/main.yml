@@ -2,12 +2,8 @@
 homebrew_install: true
 homebrew_cask_install: true
 
-homebrew_taps:
-  - homebrew/cask
-  - homebrew/cask-fonts
+vmware_homebrew_installed_packages:
 
-homebrew_installed_packages:
-
-homebrew_cask_apps:
+vmware_homebrew_cask_apps:
   - intellij-idea
   - microsoft-office
