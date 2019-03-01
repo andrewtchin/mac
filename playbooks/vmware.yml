@@ -1,0 +1,7 @@
+---
+- name: Install VMware
+  hosts: all
+  gather_facts: yes
+
+  roles:
+    - vmware
