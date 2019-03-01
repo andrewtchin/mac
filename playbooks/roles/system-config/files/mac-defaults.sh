@@ -173,12 +173,14 @@ qlmanage -r disablecache
 echo ""
 echo "Disable dictionary suggestions"
 rm -rfv "~/Library/LanguageModeling/*" "~/Library/Spelling/*" "~/Library/Suggestions/*"
+mkdir -p "~/Library/LanguageModeling/*" "~/Library/Spelling/*" "~/Library/Suggestions/*"
 chmod -R 000 ~/Library/LanguageModeling ~/Library/Spelling ~/Library/Suggestions
 chflags -R uchg ~/Library/LanguageModeling ~/Library/Spelling ~/Library/Suggestions
 
 echo ""
 echo "Disable QuickLook"
 rm -rfv "~/Library/Application Support/Quick Look/*"
+mkdir -p "~/Library/Application Support/Quick Look/*"
 chmod -R 000 "~/Library/Application Support/Quick Look"
 chflags -R uchg "~/Library/Application Support/Quick Look"
 
@@ -186,6 +188,8 @@ echo ""
 echo "Disable saved application state"
 rm -rfv "~/Library/Saved Application State/*"
 rm -rfv "~/Library/Containers/<APPNAME>/Saved Application State"
+mkdir -p "~/Library/Saved Application State/*"
+mkdir -p "~/Library/Containers/<APPNAME>/Saved Application State"
 chmod -R 000 "~/Library/Saved Application State/"
 chmod -R 000 "~/Library/Containers/<APPNAME>/Saved Application State"
 chflags -R uchg "~/Library/Saved Application State/"
@@ -193,18 +197,22 @@ chflags -R uchg "~/Library/Containers/<APPNAME>/Saved Application State"
 
 echo ""
 echo "Disable autosave metadata"
-rm -rfv "~/Library/Containers/<APP>/Data/Library/Autosave Information"
 rm -rfv "~/Library/Autosave Information"
-chmod -R 000 "~/Library/Containers/<APP>/Data/Library/Autosave Information"
+mkdir -p "~/Library/Autosave Information"
 chmod -R 000 "~/Library/Autosave Information"
-chflags -R uchg "~/Library/Containers/<APP>/Data/Library/Autosave Information"
 chflags -R uchg "~/Library/Autosave Information"
 
 echo ""
 echo "Disable Siri analytics"
 rm -rfv ~/Library/Assistant/SiriAnalytics.db
+mkdir -p ~/Library/Assistant/SiriAnalytics.db
 chmod -R 000 ~/Library/Assistant/SiriAnalytics.db
 chflags -R uchg ~/Library/Assistant/SiriAnalytics.db
+
+echo ""
+echo "Disable VLC recents"
+defaults write org.videolan.vlc NSRecentDocumentsLimit 0
+defaults write org.videolan.vlc.LSSharedFileList RecentDocuments -dict-add MaxAmount 0
 
 
 ###############################################################################
@@ -289,7 +297,7 @@ defaults write /Library/Preferences/SystemConfiguration/com.apple.nat NAT -dict-
 
 echo ""
 echo "Disable wake on network access"
-systemsetup -setwakeonnetworkaccess off
+sudo systemsetup -setwakeonnetworkaccess off
 
 
 ###############################################################################
@@ -395,13 +403,11 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 echo ""
 echo "Enable snap-to-grid for icons on the desktop and in other icon views."
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
 echo ""
 echo "Set size of icons on the desktop and in other icon views."
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
 
 echo ""
@@ -451,6 +457,7 @@ defaults write com.apple.dock show-recents -bool FALSE
 echo ""
 echo "Disable Notification Center and remove the menu bar icon"
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+echo "Requires SIP disabled"
 
 
 ###############################################################################
@@ -697,7 +704,8 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 echo ""
 echo "Disable local Time Machine backups. (This can take up a ton of SSD space on <128GB SSDs)"
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+#hash tmutil &> /dev/null && sudo tmutil disablelocal
+hash tmutil &> /dev/null && sudo tmutil disable
 
 
 ###############################################################################
@@ -723,18 +731,17 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 echo ""
 echo "Destroy filevault key on standby"
-pmset -a destroyfvkeyonstandby 1 ; pmset -a hibernatemode 25 ; pmset -a powernap 0 ; pmset -a standby 0 ; pmset -a standbydelay 0; pmset -a autopoweroff 0
+sudo pmset -a destroyfvkeyonstandby 1
+sudo pmset -a hibernatemode 25
+sudo pmset -a powernap 0
+sudo pmset -a standby 0
+sudo pmset -a standbydelay 0
+sudo pmset -a autopoweroff 0
 
 
 ###############################################################################
 # Kill affected applications
 ###############################################################################
-
-echo ""
-echo "No VLC recents"
-defaults write org.videolan.vlc NSRecentDocumentsLimit 0
-defaults write org.videolan.vlc.LSSharedFileList RecentDocuments -dict-add MaxAmount 0
-
 echo ""
 cecho "Done!" $cyan
 echo ""
