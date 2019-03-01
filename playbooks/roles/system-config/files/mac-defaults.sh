@@ -5,12 +5,13 @@
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
 if [ $# -eq 0 ]; then
-  echo "usage: $0 <hostname> <lock_screen_message>"
+  echo "usage: $0 <hostname> <lock_screen_message> <work>"
   exit 1;
 fi
 
 COMPUTER_NAME="$1"
 LOCK_SCREEN_MESSAGE="$2"
+WORK="$3"
 
 CURRENT_USER="$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')"
 

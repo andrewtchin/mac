@@ -50,7 +50,6 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - gpg-suite
   - iterm2
-  - little-snitch
   - minikube
   - postman
   - slack
