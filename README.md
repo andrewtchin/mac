@@ -9,9 +9,13 @@ Set firmware password https://support.apple.com/en-au/HT204455
 ## Usage
 
 ```bash
-# Install developer tools
-xcode-select --install
+curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh | bash
 
+# Work playbook
+curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-work.sh | bash
+```
+
+```bash
 # Clone the repo
 git clone git@github.com:andrewtchin/mac.git
 cd mac
