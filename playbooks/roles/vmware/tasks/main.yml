@@ -1,7 +1,7 @@
 ---
 - name: Install VMware files
   copy:
-    src: {{ item }}
+    src: "{{ item }}"
     dest: "/Users/{{ ansible_user_id }}/code/vmware/"
     owner: "{{ ansible_user_id }}"
     group: staff
@@ -11,7 +11,7 @@
 
 - name: Install VMware files
   copy:
-    src: {{ item }}
+    src: "{{ item }}"
     dest: "/Users/{{ ansible_user_id }}/code/vmware/"
     owner: "{{ ansible_user_id }}"
     group: staff
@@ -23,7 +23,7 @@
 - name: Install p4
   copy:
     become: yes
-    src: {{ item }}
+    src: "{{ item }}"
     dest: "/usr/local/bin/"
     owner: "{{ ansible_user_id }}"
     group: admin
