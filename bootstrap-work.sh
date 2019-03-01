@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export HOMEBREW_NO_ANALYTICS=1
+
 # Install xcode cli
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 

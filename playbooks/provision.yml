@@ -3,6 +3,9 @@
   hosts: all
   gather_facts: yes
 
+  environment:
+    HOMEBREW_NO_ANALYTICS: 1
+
   roles:
     - homebrew
     - uninstall-apps
