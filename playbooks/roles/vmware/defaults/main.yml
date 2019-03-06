@@ -5,5 +5,5 @@ homebrew_cask_install: true
 vmware_homebrew_installed_packages:
 
 vmware_homebrew_cask_apps:
-  - intellij-idea
+  - intellij-idea-ce
   - microsoft-office
