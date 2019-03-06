@@ -37,18 +37,24 @@
     state: present
   when: homebrew_install|bool
 
+- name: Add the taps
+  homebrew_tap:
+    tap: "{{ vmware_homebrew_taps }}"
+    state: present
+  when: homebrew_cask_install|bool
+
 - name: Install homebrew-cask packages
   homebrew_cask:
     name: "{{ vmware_homebrew_cask_apps }}"
     state: present
   when: homebrew_cask_install|bool
 
-- name: Upgrade homebrew packages (if configured).
+- name: Upgrade homebrew packages
   homebrew:
     update_homebrew: yes
     upgrade_all: yes
 
-- name: Upgrade homebrew-cask packages (if configured).
+- name: Upgrade homebrew-cask packages
   homebrew_cask:
     update_homebrew: yes
     upgrade_all: yes
