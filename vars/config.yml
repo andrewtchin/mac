@@ -10,6 +10,7 @@ homebrew_upgrade_all_packages: true
 homebrew_taps:
   - homebrew/cask
   - homebrew/cask-fonts
+  - thoughtbot/formulae
 
 homebrew_installed_packages:
   - autojump
@@ -31,6 +32,7 @@ homebrew_installed_packages:
   - pstree
   - pyenv
   - python
+  - rcm
   - ripgrep
   - terraform
   - the_silver_searcher

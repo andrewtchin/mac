@@ -276,7 +276,8 @@ sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Aut
 
 echo ""
 echo "Set a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 5
 
 echo ""
 echo "Disable IR"
@@ -375,9 +376,10 @@ echo "Show status bar in Finder by default."
 defaults write com.apple.finder ShowStatusBar -bool true
 
 echo ""
-echo "Show the ~/Library folder."
+echo "Show the ~/Library and /Volumes folder."
 chflags nohidden ~/Library
 chflags nohidden ~
+sudo chflags nohidden /Volumes
 
 echo ""
 echo "Show Path bar in Finder."
