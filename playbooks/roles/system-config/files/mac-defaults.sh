@@ -159,6 +159,10 @@ defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 
 echo ""
+echo "Setting region"
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLocale -string "en_US"
+
+echo ""
 echo "Prevent iTunes from opening automatically when devices are plugged in"
 defaults write com.apple.iTunesHelper ignore-devices 1
 
@@ -294,6 +298,10 @@ defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextr
 echo ""
 echo "Disable internet sharing"
 defaults write /Library/Preferences/SystemConfiguration/com.apple.nat NAT -dict-add Enabled -bool false
+
+echo ""
+echo "Enable firewall"
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 
 echo ""
 echo "Disable wake on network access"
@@ -737,6 +745,21 @@ sudo pmset -a powernap 0
 sudo pmset -a standby 0
 sudo pmset -a standbydelay 0
 sudo pmset -a autopoweroff 0
+
+echo ""
+echo "Configuring energy saver preferences"
+
+# Battery - Computer sleep: 20 min
+sudo pmset -b sleep 20
+
+# Battery - Turn display off after: 5 min
+sudo pmset -b displaysleep 5
+
+# Power Adapter - Computer sleep: never
+sudo pmset -c sleep 0
+
+# Power Adapter - Turn display off after: 15 min
+sudo pmset -c displaysleep 15
 
 
 ###############################################################################
