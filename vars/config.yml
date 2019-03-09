@@ -70,3 +70,6 @@ homedir_directories:
   - "/Users/{{ ansible_user_id }}/code/gitlab.eng.vmware.com"
   - "/Users/{{ ansible_user_id }}/code/gitlab.chinter.net"
   - "/Users/{{ ansible_user_id }}/code/vmware"
+  - "/Users/{{ ansible_user_id }}/sync"
+  - "/Users/{{ ansible_user_id }}/personal"
+  - "/Users/{{ ansible_user_id }}/work"
