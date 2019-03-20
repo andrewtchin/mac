@@ -277,7 +277,7 @@ sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Aut
 echo ""
 echo "Set fast keyboard repeat rate"
 defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain InitialKeyRepeat -int 11
 
 echo ""
 echo "Disable IR"
