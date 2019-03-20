@@ -8,6 +8,7 @@ Set firmware password https://support.apple.com/en-au/HT204455
 
 ## Usage
 
+### One touch
 ```bash
 curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh | bash
 
@@ -15,6 +16,7 @@ curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh | 
 curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-work.sh | bash
 ```
 
+### Manually
 ```bash
 # Clone the repo
 git clone git@github.com:andrewtchin/mac.git
@@ -25,6 +27,22 @@ cd mac
 
 # To include work playbook
 ./bootstrap.sh --vmware
+```
+
+### Required post install steps
+```
+# Install dotfiles
+chsh -s /bin/zsh
+curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
+
+# Setup Gas Mask
+https://github.com/StevenBlack/hosts
+
+# Enable U2F
+Firefox about:config - enable security.webauth.u2f
+
+# Check config
+https://github.com/kristovatlas/osx-config-check
 ```
 
 ## Running standalone playbook
@@ -39,20 +57,9 @@ ansible-playbook -vvv playbooks/provision.yml --ask-become-pass --extra-vars=@va
 # Security
 # This will configure extra security features of MacOS
 ansible-playbook -vvv playbooks/security.yml --ask-become-pass
-
-# Install dotfiles
-chsh -s /bin/zsh
-curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
-
-# Setup Gas Mask
-https://github.com/StevenBlack/hosts
-
-# Enable U2F
-Firefox about:config - enable security.webauth.u2f
-
-# Check config
-https://github.com/kristovatlas/osx-config-check
 ```
+
+Follow post install steps
 
 ## Defaults only
 
@@ -69,7 +76,3 @@ Its core is based off of [CIS for macOS Sierra](https://github.com/jamfprofessio
 ```bash
 ansible-playbook -vvv playbooks/security.yml --ask-become-pass
 ```
-
-# TODO
-
-- Install `p4`
