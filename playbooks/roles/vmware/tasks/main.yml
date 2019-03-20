@@ -2,7 +2,7 @@
 - name: Install VMware files
   copy:
     src: "{{ item }}"
-    dest: "/Users/{{ ansible_user_id }}/code/vmware/"
+    dest: "/Users/{{ ansible_user_id }}/src/vmware/"
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0600
@@ -12,7 +12,7 @@
 - name: Install VMware files
   copy:
     src: "{{ item }}"
-    dest: "/Users/{{ ansible_user_id }}/code/vmware/"
+    dest: "/Users/{{ ansible_user_id }}/src/vmware/"
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: 0700
@@ -30,6 +30,15 @@
     mode: 0755
   with_items:
     - p4
+
+- name: Make build directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "/build/apps"
+    - "/build/toolchain"
 
 - name: Install homebrew packages
   homebrew:
