@@ -34,7 +34,6 @@ homebrew_installed_packages:
   - python
   - rcm
   - ripgrep
-  - swagger-codegen
   - terraform
   - the_silver_searcher
   - tree
