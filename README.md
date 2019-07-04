@@ -45,6 +45,15 @@ Firefox about:config - enable security.webauth.u2f
 https://github.com/kristovatlas/osx-config-check
 ```
 
+Firefox settings
+
+- Enable `Clear history when Firefox closes`
+- Enable `Delete cookies and site data when Firefox is closed`
+- Disable Address bar suggestions from `Browsing history`
+- Disable `Autofill addresses`
+- Disable `Ask to save logins and passwords for websites`
+- Disable data sharing
+
 ## Running standalone playbook
 
 ```bash
