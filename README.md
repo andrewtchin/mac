@@ -43,16 +43,22 @@ Firefox about:config - enable security.webauth.u2f
 
 # Check config
 https://github.com/kristovatlas/osx-config-check
+
+# Configure Little Snitch
 ```
 
 #### Firefox settings
 
-- Enable `Clear history when Firefox closes`
-- Enable `Delete cookies and site data when Firefox is closed`
-- Disable Address bar suggestions from `Browsing history`
-- Disable `Autofill addresses`
-- Disable `Ask to save logins and passwords for websites`
-- Disable data sharing
+- `about:preferences#privacy`
+  - Enable `Clear history when Firefox closes`
+  - Enable `Delete cookies and site data when Firefox is closed`
+  - Disable Address bar suggestions from `Browsing history`
+  - Disable `Autofill addresses`
+  - Disable `Ask to save logins and passwords for websites`
+  - Disable data sharing
+  - Set `Enhanced Tracking Protection` `Strict`
+- Edit `about:config` `network.http.sendRefererHeader`
+  - 0 = never send the header
 
 #### Visual Studio Code Plugins
 
