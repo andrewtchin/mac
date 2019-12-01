@@ -35,12 +35,14 @@ homebrew_installed_packages:
   - rcm
   - ripgrep
   - terraform
+  - syncthing
   - the_silver_searcher
   - tree
   - vault
   - vim
   - watch
   - wget
+  - ykman
   - zsh
 
 homebrew_cask_apps:
@@ -52,6 +54,8 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - gpg-suite
   - iterm2
+  - keybase
+  - licecap
   - minikube
   - postman
   - slack

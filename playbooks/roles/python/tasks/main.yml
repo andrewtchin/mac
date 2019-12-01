@@ -1,0 +1,11 @@
+---
+
+# Install https://github.com/PyCQA/bandit
+- pip:
+    name: bandit
+    executable: pip3
+
+# Install https://github.com/google/pytype
+- pip:
+    name: pytype
+    executable: pip3
