@@ -27,6 +27,7 @@ homebrew_installed_packages:
   - jq
   - kubectl
   - kubernetes-helm
+  - nmap
   - openssl
   - pipenv
   - pstree
