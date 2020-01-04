@@ -29,6 +29,7 @@ homebrew_installed_packages:
   - kubernetes-helm
   - nmap
   - openssl
+  - pinentry-mac
   - pipenv
   - pstree
   - pyenv
@@ -44,6 +45,7 @@ homebrew_installed_packages:
   - watch
   - wget
   - ykman
+  - yubikey-personalization
   - zsh
 
 homebrew_cask_apps:
