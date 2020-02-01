@@ -38,7 +38,6 @@ homebrew_installed_packages:
   - rcm
   - ripgrep
   - terraform
-  - syncthing
   - the_silver_searcher
   - tree
   - vault
@@ -63,6 +62,7 @@ homebrew_cask_apps:
   - menumeters
   - postman
   - slack
+  - syncthing
   - tunnelblick
   - visual-studio-code
   - vlc
