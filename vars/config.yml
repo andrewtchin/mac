@@ -27,6 +27,7 @@ homebrew_installed_packages:
   - jq
   - kubectl
   - kubernetes-helm
+  - minikube
   - nmap
   - openssl
   - pinentry-mac
@@ -59,7 +60,6 @@ homebrew_cask_apps:
   - iterm2
   - keybase
   - licecap
-  - minikube
   - postman
   - slack
   - tunnelblick
