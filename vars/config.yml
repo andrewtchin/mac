@@ -60,6 +60,7 @@ homebrew_cask_apps:
   - iterm2
   - keybase
   - licecap
+  - menumeters
   - postman
   - slack
   - tunnelblick
@@ -67,7 +68,6 @@ homebrew_cask_apps:
   - vlc
   - vmware-fusion
   - xquartz
-  - yujitach-menumeters
   - zoomus
 
 homedir_directories:
