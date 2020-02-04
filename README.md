@@ -45,6 +45,8 @@ Firefox about:config - enable security.webauth.u2f
 https://github.com/kristovatlas/osx-config-check
 
 # Configure Little Snitch
+
+# Remap ESC
 ```
 
 #### Firefox settings
