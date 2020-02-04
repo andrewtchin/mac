@@ -37,9 +37,7 @@ curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotf
 
 # Setup Gas Mask
 https://github.com/StevenBlack/hosts
-
-# Enable U2F
-Firefox about:config - enable security.webauth.u2f
+http://sbc.io/hosts/hosts
 
 # Check config
 https://github.com/kristovatlas/osx-config-check
