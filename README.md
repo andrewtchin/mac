@@ -47,6 +47,9 @@ https://github.com/kristovatlas/osx-config-check
 # Configure Little Snitch
 
 # Remap ESC
+
+# Require password immediately after screensaaver
+# Show a lock message
 ```
 
 #### Firefox settings
