@@ -20,6 +20,7 @@ homebrew_installed_packages:
   - coreutils
   - curl
   - docker-completion
+  - doctl
   - exa
   - gcc
   - git
@@ -69,7 +70,6 @@ homebrew_cask_apps:
   - visual-studio-code
   - vlc
   - vmware-fusion
-  - xquartz
   - zoomus
 
 homedir_directories:
