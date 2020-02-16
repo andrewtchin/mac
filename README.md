@@ -2,9 +2,12 @@
 
 ## Before
 
-Reset NVRAM https://support.apple.com/en-us/HT204063
-
-Set firmware password https://support.apple.com/en-au/HT204455
+- Backup existing files if reinstalling a currently used mac
+- Remove all external storage
+- Enter macOS recover to erase HD https://support.apple.com/en-us/HT208496
+- Reset NVRAM https://support.apple.com/en-us/HT204063
+- Run Internet Recovery https://support.apple.com/en-us/HT204904
+- Set firmware password https://support.apple.com/en-au/HT204455
 
 ## Usage
 
