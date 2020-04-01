@@ -22,6 +22,7 @@ homebrew_installed_packages:
   - docker-completion
   - doctl
   - exa
+  - gawk
   - gcc
   - git
   - gnupg
