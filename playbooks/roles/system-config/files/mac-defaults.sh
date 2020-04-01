@@ -258,6 +258,26 @@ echo "Disable autocorrect"
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 echo ""
+echo "Disable autoperiod"
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+echo ""
+echo "Disable text completion"
+defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+
+echo ""
+echo "Disable smart dsahes"
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+echo ""
+echo "Disable smart quotes"
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+echo ""
+echo "Disable capitalization"
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+echo ""
 echo "Setting trackpad & mouse speed to a reasonable number"
 defaults write -g com.apple.trackpad.scaling 2
 defaults write -g com.apple.mouse.scaling 2.5
@@ -590,6 +610,7 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Enable continuous spellchecking
 defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
+
 # Disable auto-correct
 defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
