@@ -22,6 +22,7 @@ homebrew_installed_packages:
   - docker-completion
   - doctl
   - exa
+  - exiftool
   - gawk
   - gcc
   - git
@@ -47,6 +48,7 @@ homebrew_installed_packages:
   - watch
   - wget
   - ykman
+  - youtube-dl
   - yubikey-personalization
   - zsh
 
@@ -67,6 +69,7 @@ homebrew_cask_apps:
   - postman
   - slack
   - syncthing
+  - transmission
   - tunnelblick
   - visual-studio-code
   - vlc
