@@ -1,0 +1,14 @@
+---
+homebrew_install: true
+homebrew_cask_install: true
+homebrew_upgrade_all_packages: true
+
+homebrew_taps_home:
+
+homebrew_installed_packages_home:
+
+homebrew_cask_apps_home:
+
+homedir_directories:
+
+homedir_directories_home:

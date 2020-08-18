@@ -2,17 +2,13 @@
 
 export HOMEBREW_NO_ANALYTICS=1
 
-# Install xcode cli
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install xcode cli and homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-# Install Ansible
-sudo easy_install pip
+echo "Install Python"
+brew install python@3.8
 
-git clone https://github.com/ansible/ansible.git --recursive
-source ansible/hacking/env-setup
-pip install --user -r ansible/requirements.txt
+echo "Install Ansible"
+sudo pip3 install ansible
 
-# Run playbook
-ansible-playbook -vvv playbooks/provision.yml --ask-become-pass --extra-vars=@vars/config.yml
-
-ansible-playbook -vvv playbooks/vmware.yml --ask-become-pass
+ansible-playbook -vvv playbooks/work.yml --ask-become-pass --extra-vars=@vars/config.yml

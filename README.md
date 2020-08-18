@@ -13,10 +13,11 @@
 
 ### One touch
 ```bash
-curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh | bash
-
 # Work playbook
 curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-work.sh | bash
+
+# Home playbook
+curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-home.sh | bash
 ```
 
 ### Manually
@@ -25,11 +26,9 @@ curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-work.
 git clone git@github.com:andrewtchin/mac.git
 cd mac
 
-# Install XCode CLI, pip, and upstream Ansible, run provision.yml
-./bootstrap.sh
-
-# To include work playbook
-./bootstrap.sh --vmware
+# Run additional playbooks
+./bootstrap-work.sh
+./bootstrap-home.sh
 ```
 
 ### Required post install steps
@@ -74,6 +73,7 @@ https://github.com/kristovatlas/osx-config-check
   - lombok
 - Python
   - pylint
+- Terraform
 
 ## Running standalone playbook
 

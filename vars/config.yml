@@ -1,15 +1,12 @@
 ---
-host_name: CORPORATE
-lock_screen_message: ""
-
 homebrew_install: true
 homebrew_cask_install: true
-homebrew_cask_fonts_install: false
 homebrew_upgrade_all_packages: true
 
 homebrew_taps:
   - homebrew/cask
   - homebrew/cask-fonts
+  - caskroom/versions
   - thoughtbot/formulae
 
 homebrew_installed_packages:
@@ -52,40 +49,52 @@ homebrew_installed_packages:
   - yubikey-personalization
   - zsh
 
+homebrew_installed_packages_home:
+
+homebrew_installed_packages_work:
+
 homebrew_cask_apps:
   - 1password
   - docker
   - firefox
   - flux
-  - gas-mask
   - google-cloud-sdk
   - gpg-suite
   - iterm2
   - keybase
   - licecap
-  - little-snitch
   - menumeters
   - microsoft-office
   - postman
   - slack
+  - visual-studio-code
+  - vmware-fusion
+  - zoomus
+
+homebrew_cask_apps_home:
+  - gas-mask
+  - little-snitch
   - syncthing
   - transmission
   - tunnelblick
-  - visual-studio-code
   - vlc
-  - vmware-fusion
-  - zoomus
+
+homebrew_cask_apps_work:
+  - java8
+  - intellij-idea-ce
 
 homedir_directories:
   - "/Users/{{ ansible_user_id }}/src"
   - "/Users/{{ ansible_user_id }}/src/sandbox"
   - "/Users/{{ ansible_user_id }}/src/github.com"
   - "/Users/{{ ansible_user_id }}/src/gitlab.com"
-  - "/Users/{{ ansible_user_id }}/src/gitlab.eng.vmware.com"
+
+homedir_directories_work:
+  - "/Users/{{ ansible_user_id }}/work"
+
+homedir_directories_home:
   - "/Users/{{ ansible_user_id }}/src/gitlab.chinter.net"
-  - "/Users/{{ ansible_user_id }}/src/vmware"
   - "/Users/{{ ansible_user_id }}/sync/common"
   - "/Users/{{ ansible_user_id }}/sync/common/credentials/1password"
   - "/Users/{{ ansible_user_id }}/sync/personal"
   - "/Users/{{ ansible_user_id }}/sync/{{ host_name }}"
-  - "/Users/{{ ansible_user_id }}/work"

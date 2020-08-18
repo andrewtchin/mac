@@ -1,0 +1,17 @@
+---
+- name: Install Work
+  hosts: all
+  gather_facts: yes
+
+  vars:
+    host_name: 
+    lock_screen_message: ""
+
+  environment:
+    HOMEBREW_NO_ANALYTICS: 1
+
+  roles:
+    - homebrew-common
+    - work
+    - customize
+    - { role: system-config, hostname: "{{ host_name }}", lock_screen_message: "{{ lock_screen_message }}" }

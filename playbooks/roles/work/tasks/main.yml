@@ -1,0 +1,54 @@
+---
+# Tap
+- name: Always tap cask.
+  homebrew_tap:
+    tap: "homebrew/cask"
+    state: present
+
+- name: Add the taps
+  homebrew_tap:
+    tap: "{{ homebrew_taps_work }}"
+    state: present
+
+# Brew
+- name: Install homebrew packages
+  homebrew:
+    name: "{{ homebrew_installed_packages_work }}"
+    state: present
+  when: homebrew_install|bool
+
+# Cask
+- name: Install homebrew-cask packages
+  homebrew_cask:
+    name: "{{ homebrew_cask_apps_work }}"
+    state: present
+  when: homebrew_cask_install|bool
+
+# Upgrade
+- name: Upgrade homebrew packages (if configured)
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+  when: homebrew_upgrade_all_packages|bool
+
+- name: Upgrade homebrew-cask packages (if configured)
+  homebrew_cask:
+    update_homebrew: yes
+    upgrade_all: yes
+  when: homebrew_upgrade_all_packages|bool
+
+- name: Make directories in home
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0700
+  with_items:
+    - "{{ homedir_directories }}"
+
+- name: Make work directories in home
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0700
+  with_items:
+    - "{{ homedir_directories_work }}"

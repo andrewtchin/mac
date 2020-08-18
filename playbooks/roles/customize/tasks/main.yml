@@ -13,11 +13,3 @@
 
 - name: Install mac-changer.sh
   copy: src=mac-changer.sh dest="/usr/local/bin" mode=0755
-
-- name: Make directories in home
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: 0700
-  with_items:
-    - "{{ homedir_directories }}"
