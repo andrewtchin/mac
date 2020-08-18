@@ -64,7 +64,6 @@ homebrew_cask_apps:
   - keybase
   - licecap
   - menumeters
-  - microsoft-office
   - postman
   - slack
   - visual-studio-code
@@ -74,6 +73,7 @@ homebrew_cask_apps:
 homebrew_cask_apps_home:
   - gas-mask
   - little-snitch
+  - microsoft-office
   - syncthing
   - transmission
   - tunnelblick
