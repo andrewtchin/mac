@@ -58,7 +58,6 @@ homebrew_cask_apps:
   - 1password
   - docker
   - firefox
-  - flux
   - google-cloud-sdk
   - gpg-suite
   - iterm2
