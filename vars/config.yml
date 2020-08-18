@@ -52,6 +52,7 @@ homebrew_installed_packages:
 homebrew_installed_packages_home:
 
 homebrew_installed_packages_work:
+  - lastpass-cli
 
 homebrew_cask_apps:
   - 1password
@@ -80,8 +81,9 @@ homebrew_cask_apps_home:
   - vlc
 
 homebrew_cask_apps_work:
-  - java8
   - intellij-idea-ce
+  - java8
+  - lastpass
 
 homedir_directories:
   - "/Users/{{ ansible_user_id }}/src"
