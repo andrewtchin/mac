@@ -11,4 +11,7 @@ brew install python@3.8
 echo "Install Ansible"
 sudo pip3 install ansible
 
+git clone https://github.com/andrewtchin/mac.git
+cd mac
+
 ansible-playbook -vvv playbooks/work.yml --ask-become-pass --extra-vars=@vars/config.yml
