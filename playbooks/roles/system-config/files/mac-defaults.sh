@@ -45,7 +45,7 @@ sudo -v
 # General UI/UX
 ###############################################################################
 
-if [ -n "$COMPUTER_NAME"]; then
+if [ -n "$COMPUTER_NAME" ]; then
 echo ""
 echo "Setting your computer name (as done via System Preferences >> Sharing)?  (y/n)"
 sudo scutil --set ComputerName $COMPUTER_NAME
