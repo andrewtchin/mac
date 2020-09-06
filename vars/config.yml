@@ -57,7 +57,9 @@ homebrew_installed_packages_work:
 homebrew_cask_apps:
   - 1password
   - docker
+  - drawio
   - firefox
+  - flux
   - google-cloud-sdk
   - gpg-suite
   - iterm2
@@ -71,10 +73,16 @@ homebrew_cask_apps:
   - zoomus
 
 homebrew_cask_apps_home:
+  - do-not-disturb
   - gas-mask
+  - knockknock
   - little-snitch
   - microsoft-office
+  - netiquette
+  - oversight
+  - reikey
   - syncthing
+  - taskexplorer
   - transmission
   - tunnelblick
   - vlc
