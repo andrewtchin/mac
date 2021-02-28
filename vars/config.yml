@@ -72,7 +72,7 @@ homebrew_cask_apps:
   - slack
   - visual-studio-code
   - vmware-fusion
-  - zoomus
+  - zoom
 
 homebrew_cask_apps_home:
   - doxie
