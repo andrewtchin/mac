@@ -1,5 +1,5 @@
 ---
-- name: Set OS X defaults.
-  script: mac-defaults.sh "{{ hostname }}" "{{ lockscreenmessage }}"
+- name: Set OS X defaults
+  script: mac-defaults.sh
 
 - debug: msg="Reboot to apply defaults."

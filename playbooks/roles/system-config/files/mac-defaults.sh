@@ -4,14 +4,6 @@
 # on the web, most from here
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
-if [ $# -eq 0 ]; then
-  echo "usage: $0 <hostname> <lock_screen_message>"
-  exit 1;
-fi
-
-COMPUTER_NAME="$1"
-LOCK_SCREEN_MESSAGE="$2"
-
 CURRENT_USER="$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')"
 
 
@@ -44,21 +36,6 @@ sudo -v
 ###############################################################################
 # General UI/UX
 ###############################################################################
-
-if [ -n "$COMPUTER_NAME" ]; then
-echo ""
-echo "Setting your computer name (as done via System Preferences >> Sharing)?  (y/n)"
-sudo scutil --set ComputerName $COMPUTER_NAME
-sudo scutil --set HostName $COMPUTER_NAME
-sudo scutil --set LocalHostName $COMPUTER_NAME
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
-fi
-
-if [ -n "$LOCK_SCREEN_MESSAGE" ]; then
-echo ""
-echo "Setting lock screen message"
-sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "$LOCK_SCREEN_MESSAGE"
-fi
 
 echo ""
 echo "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed before."

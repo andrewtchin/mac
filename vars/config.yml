@@ -17,9 +17,9 @@ homebrew_installed_packages:
   - coreutils
   - curl
   - docker-completion
-  - doctl
   - exa
   - exiftool
+  - ffmpeg
   - gawk
   - gcc
   - git
@@ -50,6 +50,9 @@ homebrew_installed_packages:
   - zsh
 
 homebrew_installed_packages_home:
+  - dnscontrol
+  - doctl
+  - flarectl
 
 homebrew_installed_packages_work:
   - lastpass-cli
@@ -63,7 +66,6 @@ homebrew_cask_apps:
   - google-cloud-sdk
   - gpg-suite
   - iterm2
-  - keybase
   - licecap
   - menumeters
   - postman
@@ -73,8 +75,8 @@ homebrew_cask_apps:
   - zoomus
 
 homebrew_cask_apps_home:
+  - doxie
   - do-not-disturb
-  - gas-mask
   - knockknock
   - little-snitch
   - microsoft-office

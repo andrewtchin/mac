@@ -52,3 +52,6 @@
     mode: 0700
   with_items:
     - "{{ homedir_directories_home }}"
+
+- name: Set hostname and lockscreen message
+  script: configure.sh "{{ lookup('env','MAC_HOSTNAME') }}" "{{ lookup('env','MAC_LOCKSCREEN') }}"

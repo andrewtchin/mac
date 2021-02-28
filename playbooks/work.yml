@@ -14,4 +14,4 @@
     - homebrew-common
     - work
     - customize
-    - { role: system-config, hostname: "{{ host_name }}", lockscreenmessage: "{{ lock_screen_message }}" }
+    - system-config

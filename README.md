@@ -11,24 +11,18 @@
 
 ## Usage
 
-### One touch
+### Bootstrap and run
 ```bash
-# Work playbook
-curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-work.sh | bash
+curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh | bash
 
-# Home playbook
-curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap-home.sh | bash
-```
-
-### Manually
-```bash
-# Clone the repo
-git clone git@github.com:andrewtchin/mac.git
+git clone https://github.com/andrewtchin/mac.git
 cd mac
 
-# Run additional playbooks
-./bootstrap-work.sh
-./bootstrap-home.sh
+# Pick which playbook
+export MAC_HOSTNAME=
+export MAC_LOCKSCREEN=
+ansible-playbook -vvv playbooks/home.yml --ask-become-pass --extra-vars=@vars/config.yml
+ansible-playbook -vvv playbooks/work.yml --ask-become-pass --extra-vars=@vars/config.yml
 ```
 
 ### Required post install steps
@@ -37,9 +31,7 @@ cd mac
 chsh -s /bin/zsh
 curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
 
-# Setup Gas Mask
-https://github.com/StevenBlack/hosts
-http://sbc.io/hosts/hosts
+# Setup nextdns
 
 # Check config
 https://github.com/kristovatlas/osx-config-check
