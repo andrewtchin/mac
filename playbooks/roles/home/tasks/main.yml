@@ -9,6 +9,7 @@
   homebrew_tap:
     tap: "{{ homebrew_taps_home }}"
     state: present
+  when: homebrew_taps_home|bool
 
 # Brew
 - name: Install homebrew packages
@@ -44,6 +45,7 @@
     mode: 0700
   with_items:
     - "{{ homedir_directories }}"
+  when: homedir_directories|bool
 
 - name: Make home directories in home
   file:
@@ -52,6 +54,7 @@
     mode: 0700
   with_items:
     - "{{ homedir_directories_home }}"
+  when: homedir_directories_home|bool
 
 - name: Set hostname and lockscreen message
   script: configure.sh "{{ lookup('env','MAC_HOSTNAME') }}" "{{ lookup('env','MAC_LOCKSCREEN') }}"
