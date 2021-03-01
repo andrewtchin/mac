@@ -1,8 +1,11 @@
 #!/bin/bash
 
+COMPUTER_NAME="$1"
+LOCK_SCREEN_MESSAGE="$2"
+
 if [ -n "$COMPUTER_NAME" ]; then
 echo ""
-echo "Setting your computer name (as done via System Preferences >> Sharing)?  (y/n)"
+echo "Setting computer name"
 sudo scutil --set ComputerName $COMPUTER_NAME
 sudo scutil --set HostName $COMPUTER_NAME
 sudo scutil --set LocalHostName $COMPUTER_NAME
