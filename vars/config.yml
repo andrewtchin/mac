@@ -55,6 +55,7 @@ homebrew_installed_packages_home:
   - flarectl
 
 homebrew_installed_packages_work:
+  - aws-okta
   - lastpass-cli
 
 homebrew_cask_apps:
