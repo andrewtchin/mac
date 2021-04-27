@@ -7,7 +7,7 @@ export HOMEBREW_NO_ANALYTICS=1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Install Python"
-brew install python@3.8
+brew install python@3.9
 
 echo "Install Ansible"
 sudo pip3 install ansible
