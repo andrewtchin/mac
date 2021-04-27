@@ -7,13 +7,14 @@
 - Enter macOS recover to erase HD https://support.apple.com/en-us/HT208496
 - Reset NVRAM https://support.apple.com/en-us/HT204063
 - Run Internet Recovery https://support.apple.com/en-us/HT204904
-- Set firmware password https://support.apple.com/en-au/HT204455
+- Set firmware password https://support.apple.com/en-us/HT204455
 
 ## Usage
 
 ### Bootstrap and run
 ```bash
-curl -L https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh | bash
+curl -Lo bootstrap.sh https://raw.githubusercontent.com/andrewtchin/mac/master/bootstrap.sh
+bash bootstrap.sh
 
 git clone https://github.com/andrewtchin/mac.git
 cd mac
