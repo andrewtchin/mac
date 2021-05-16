@@ -71,6 +71,7 @@ homebrew_cask_apps:
   - menumeters
   - postman
   - slack
+  - utc-menu-clock
   - visual-studio-code
   - vmware-fusion
   - zoom
