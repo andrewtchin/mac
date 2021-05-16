@@ -42,7 +42,6 @@ https://github.com/kristovatlas/osx-config-check
 # Remap ESC
 
 # Require password immediately after screensaaver
-# Show a lock message
 ```
 
 #### Firefox settings
