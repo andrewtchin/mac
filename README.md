@@ -8,6 +8,7 @@
 - Reset NVRAM https://support.apple.com/en-us/HT204063
 - Run Internet Recovery https://support.apple.com/en-us/HT204904
 - Set firmware password https://support.apple.com/en-us/HT204455
+- Give Terminal Full Disk Access: System Preferences, Security & Privacy, Privacy, Full Disk Access
 
 ## Usage
 
@@ -59,10 +60,6 @@ https://github.com/kristovatlas/osx-config-check
 
 #### Visual Studio Code Plugins
 
-- Java
-  - checkstyle
-  - java
-  - lombok
 - Python
   - pylint
 - Terraform
@@ -83,7 +80,7 @@ ansible-playbook -vvv playbooks/security.yml --ask-become-pass
 
 Follow post install steps
 
-## Defaults only
+## Defaults (`system-config` role) only
 
 ```bash
 ansible-playbook -vvv playbooks/defaults.yml --ask-become-pass --extra-vars=@vars/config.yml

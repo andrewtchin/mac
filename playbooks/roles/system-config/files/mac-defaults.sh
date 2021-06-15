@@ -156,42 +156,38 @@ qlmanage -r disablecache
 
 echo ""
 echo "Disable dictionary suggestions"
-rm -rfv "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
-mkdir -p "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
-chmod -R 000 /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
-chflags -R uchg /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
+sudo rm -rfv "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
+sudo mkdir -p "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
+sudo chmod -R 000 /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
+sudo chflags -R uchg /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
 
 echo ""
 echo "Disable QuickLook"
-rm -rfv "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
-mkdir -p "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
-chmod -R 000 "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
-chflags -R uchg "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
+sudo rm -rfv "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
+sudo mkdir -p "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
+sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
+sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
 
 echo ""
 echo "Disable saved application state"
-rm -rfv "/Users/$CURRENT_USER/Library/Saved Application State/*"
-rm -rfv "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
-mkdir -p "/Users/$CURRENT_USER/Library/Saved Application State/*"
-mkdir -p "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
-chmod -R 000 "/Users/$CURRENT_USER/Library/Saved Application State/"
-chmod -R 000 "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
-chflags -R uchg "/Users/$CURRENT_USER/Library/Saved Application State/"
-chflags -R uchg "/Users/$CURRENT_USER/Library/Containers/<APPNAME>/Saved Application State"
+sudo rm -rfv "/Users/$CURRENT_USER/Library/Saved Application State/*"
+sudo mkdir -p "/Users/$CURRENT_USER/Library/Saved Application State/*"
+sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Saved Application State/"
+sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Saved Application State/"
 
 echo ""
 echo "Disable autosave metadata"
-rm -rfv "/Users/$CURRENT_USER/Library/Autosave Information"
-mkdir -p "/Users/$CURRENT_USER/Library/Autosave Information"
-chmod -R 000 "/Users/$CURRENT_USER/Library/Autosave Information"
-chflags -R uchg "/Users/$CURRENT_USER/Library/Autosave Information"
+sudo rm -rfv "/Users/$CURRENT_USER/Library/Autosave Information"
+sudo mkdir -p "/Users/$CURRENT_USER/Library/Autosave Information"
+sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Autosave Information"
+sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Autosave Information"
 
 echo ""
 echo "Disable Siri analytics"
-rm -rfv /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
-mkdir -p /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
-chmod -R 000 /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
-chflags -R uchg /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+sudo rm -rfv /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+sudo mkdir -p /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+sudo chmod -R 000 /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
+sudo chflags -R uchg /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
 
 echo ""
 echo "Disable VLC recents"
@@ -282,7 +278,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 echo ""
 echo "Disable IR"
-defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
+sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
 
 echo ""
 echo "Show Bluetooth menu"
@@ -296,10 +292,6 @@ defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextr
 ###############################################################################
 # Network
 ###############################################################################
-
-echo ""
-echo "Disable internet sharing"
-defaults write /Library/Preferences/SystemConfiguration/com.apple.nat NAT -dict-add Enabled -bool false
 
 echo ""
 echo "Enable firewall"
@@ -465,10 +457,10 @@ echo ""
 echo "Do not show recents"
 defaults write com.apple.dock show-recents -bool FALSE
 
-echo ""
-echo "Disable Notification Center and remove the menu bar icon"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
-echo "Requires SIP disabled"
+# echo ""
+# echo "Disable Notification Center and remove the menu bar icon"
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+# echo "Requires SIP disabled"
 
 ###############################################################################
 # Chrome, Safari, & WebKit
@@ -729,8 +721,8 @@ sudo pmset -b displaysleep 5
 # Power Adapter - Computer sleep: never
 sudo pmset -c sleep 0
 
-# Power Adapter - Turn display off after: 15 min
-sudo pmset -c displaysleep 15
+# Power Adapter - Turn display off after: 30 min
+sudo pmset -c displaysleep 30
 
 
 ###############################################################################
@@ -744,12 +736,3 @@ cecho "#########################################################################
 echo ""
 echo ""
 cecho "Note that some of these changes require a logout/restart to take effect." $red
-# cecho "Killing some open applications in order to take effect." $red
-# echo ""
-
-# find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
-# for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-#   "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
-#   "Terminal" "Transmission"; do
-#   killall "${app}" > /dev/null 2>&1
-# done
