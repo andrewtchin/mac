@@ -7,7 +7,7 @@
 - Enter macOS recover to erase HD https://support.apple.com/en-us/HT208496
 - Reset NVRAM https://support.apple.com/en-us/HT204063
 - Run Internet Recovery https://support.apple.com/en-us/HT204904
-- Set firmware password https://support.apple.com/en-us/HT204455
+- Set firmware password (`sudo firmwarepasswd -setpasswd` and `sudo firmwarepasswd -check`) https://support.apple.com/en-us/HT204455
 - Give Terminal Full Disk Access: System Preferences, Security & Privacy, Privacy, Full Disk Access
 
 ## Usage
