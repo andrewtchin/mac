@@ -241,7 +241,7 @@ defaults write -g com.apple.mouse.scaling 2.5
 
 echo ""
 echo "Setting scroll direction to classic"
-defaults write -g com.apple.swipescrolldirection -bool FALSE
+defaults write -g com.apple.swipescrolldirection -bool true
 
 echo ""
 echo "Turn off keyboard illumination when computer is not used for 5 minutes"
