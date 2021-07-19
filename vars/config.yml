@@ -73,6 +73,7 @@ homebrew_cask_apps:
   - utc-menu-clock
   - visual-studio-code
   - vmware-fusion
+  - vscodium
   - zoom
 
 homebrew_cask_apps_home:
@@ -99,7 +100,7 @@ homedir_directories:
   - "/Users/{{ ansible_user_id }}/src/gitlab.com"
 
 homedir_directories_work:
-  - "/Users/{{ ansible_user_id }}/work"
+  - "/Users/{{ ansible_user_id }}/src/github.com/procore"
 
 homedir_directories_home:
   - "/Users/{{ ansible_user_id }}/src/gitlab.chinter.net"
