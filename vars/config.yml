@@ -16,7 +16,6 @@ homebrew_installed_packages:
   - bash-completion
   - coreutils
   - curl
-  - docker-completion
   - exa
   - exiftool
   - ffmpeg
