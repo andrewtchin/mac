@@ -49,9 +49,9 @@ echo "Change indexing order and disable some search results in Spotlight."
 defaults write com.apple.spotlight orderedItems -array \
   '{"enabled" = 1;"name" = "APPLICATIONS";}' \
   '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-  '{"enabled" = 1;"name" = "DIRECTORIES";}' \
-  '{"enabled" = 1;"name" = "PDF";}' \
-  '{"enabled" = 1;"name" = "FONTS";}' \
+  '{"enabled" = 0;"name" = "DIRECTORIES";}' \
+  '{"enabled" = 0;"name" = "PDF";}' \
+  '{"enabled" = 0;"name" = "FONTS";}' \
   '{"enabled" = 0;"name" = "DOCUMENTS";}' \
   '{"enabled" = 0;"name" = "MESSAGES";}' \
   '{"enabled" = 0;"name" = "CONTACT";}' \
@@ -144,6 +144,10 @@ defaults write com.apple.iTunesHelper ignore-devices 1
 echo ""
 echo "Show battery percentage"
 defaults write com.apple.menuextra.battery ShowPercent YES
+
+echo ""
+echo "Disable Autogather"
+defaults write com.apple.appleseed.FeedbackAssistant "Autogather" -bool "false" 
 
 echo ""
 echo "Disable QuickLook"
@@ -314,6 +318,14 @@ echo "Setting screenshot format to JPG"
 defaults write com.apple.screencapture type -string "jpg"
 
 echo ""
+echo "Setting screenshot format to JPG"
+defaults write com.apple.screencapture show-thumbnail -bool false
+
+echo ""
+echo "Disable screenshot shadow"
+defaults write com.apple.screencapture disable-shadow -bool true
+
+echo ""
 echo "Enabling subpixel font rendering on non-Apple LCDs"
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
@@ -328,6 +340,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 echo ""
 echo "Show icons for hard drives, servers, and removable media on the desktop."
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 echo ""
 echo "Show hidden files in Finder by default."
