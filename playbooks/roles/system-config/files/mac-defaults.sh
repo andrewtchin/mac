@@ -38,11 +38,6 @@ sudo -v
 ###############################################################################
 
 echo ""
-echo "Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed before."
-echo 'Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.'
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
-
-echo ""
 echo "Change indexing order and disable some search results in Spotlight."
 # Yosemite-specific search results (remove them if your are using OS X 10.9 or older):
 #   MENU_DEFINITION
@@ -151,17 +146,6 @@ echo "Show battery percentage"
 defaults write com.apple.menuextra.battery ShowPercent YES
 
 echo ""
-echo "Disable thumbnail cache"
-qlmanage -r disablecache
-
-echo ""
-echo "Disable dictionary suggestions"
-sudo rm -rfv "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
-sudo mkdir -p "/Users/$CURRENT_USER/Library/LanguageModeling/*" "/Users/$CURRENT_USER/Library/Spelling/*" "/Users/$CURRENT_USER/Library/Suggestions/*"
-sudo chmod -R 000 /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
-sudo chflags -R uchg /Users/$CURRENT_USER/Library/LanguageModeling /Users/$CURRENT_USER/Library/Spelling /Users/$CURRENT_USER/Library/Suggestions
-
-echo ""
 echo "Disable QuickLook"
 sudo rm -rfv "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
 sudo mkdir -p "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
@@ -174,13 +158,6 @@ sudo rm -rfv "/Users/$CURRENT_USER/Library/Saved Application State/*"
 sudo mkdir -p "/Users/$CURRENT_USER/Library/Saved Application State/*"
 sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Saved Application State/"
 sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Saved Application State/"
-
-echo ""
-echo "Disable autosave metadata"
-sudo rm -rfv "/Users/$CURRENT_USER/Library/Autosave Information"
-sudo mkdir -p "/Users/$CURRENT_USER/Library/Autosave Information"
-sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Autosave Information"
-sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Autosave Information"
 
 echo ""
 echo "Disable Siri analytics"
@@ -367,6 +344,10 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 echo ""
 echo "Show status bar in Finder by default."
 defaults write com.apple.finder ShowStatusBar -bool true
+
+echo ""
+echo "Show path bar in Finder by default."
+defaults write com.apple.finder ShowPathbar -bool true
 
 echo ""
 echo "Show the ~/Library and /Volumes folder."
