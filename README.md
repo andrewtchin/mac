@@ -25,25 +25,22 @@ export MAC_HOSTNAME=
 export MAC_LOCKSCREEN=
 ansible-playbook -vvv playbooks/home.yml --ask-become-pass --extra-vars=@vars/config.yml
 ansible-playbook -vvv playbooks/work.yml --ask-become-pass --extra-vars=@vars/config.yml
+
+# Preferences only
+ansible-playbook -vvv playbooks/home.yml --ask-become-pass --extra-vars=@vars/config.yml --start-at-task="Set OS X defaults"
+
 ```
 
 ### Required post install steps
 ```
 # Install dotfiles
-chsh -s /bin/zsh
 curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotfiles.sh | bash
-
-# Setup nextdns
-
-# Check config
-https://github.com/kristovatlas/osx-config-check
-
-# Configure Little Snitch
-
-# Remap ESC
-
-# Require password immediately after screensaaver
 ```
+
+- Setup nextdns
+- Configure Little Snitch
+- Remap ESC
+- Require password immediately after screensaver
 
 #### Firefox settings
 
@@ -57,12 +54,6 @@ https://github.com/kristovatlas/osx-config-check
   - Set `Enhanced Tracking Protection` `Strict`
 - Edit `about:config` `network.http.sendRefererHeader`
   - 0 = never send the header
-
-#### Visual Studio Code Plugins
-
-- Python
-  - pylint
-- Terraform
 
 ## Running standalone playbook
 
