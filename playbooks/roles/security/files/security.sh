@@ -15,7 +15,7 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -bool true
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
 # enable set time and date automatically
-systemsetup -setusingnetworktime on
+sudo systemsetup -setusingnetworktime on
 
 # enable screensaver after 10 minutes of inactivity
 defaults write /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.screensaver."$hardwareUUID".plist idleTime -int 600
@@ -116,7 +116,7 @@ defaults write /Users/"$currentUser"/Library/Preferences/com.apple.security.revo
 defaults write /Users/"$currentUser"/Library/Preferences/com.apple.security.revocation CRLStyle -string RequireIfPresent
 
 # don't enable the 'root' account
-dscl . -create /Users/root UserShell /usr/bin/false
+sudo dscl . -create /Users/root UserShell /usr/bin/false
 
 # password on wake from sleep or screensaver
 defaults write com.apple.screensaver askForPassword -int 1
@@ -131,17 +131,17 @@ sudo security authorizationdb write system.preferences < /tmp/system.preferences
 sudo security authorizationdb write system.login.screensaver "use-login-window-ui"
 
 # disable fast user switching
-defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool false
+sudo defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool false
 
 # login window as name and password (not prompted for with a username)
-defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool true
+sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool true
 
 # disable guest account
-defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled -bool false
+sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled -bool false
 
 # disable allow guests to connect to shared folders
-defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool no
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool no
+sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool no
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool no
 
 # remove guest home folder
 rm -rf /Users/Guest
