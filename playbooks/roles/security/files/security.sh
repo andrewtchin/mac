@@ -17,10 +17,6 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 # enable set time and date automatically
 systemsetup -setusingnetworktime on
 
-# restrict ntp server to loopback interface
-cp /etc/ntp-restrict.conf /etc/ntp-restrict_old.conf
-echo -n "restrict lo interface ignore wildcard interface listen lo" >> /etc/ntp-restrict.conf
-
 # enable screensaver after 10 minutes of inactivity
 defaults write /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.screensaver."$hardwareUUID".plist idleTime -int 600
 
@@ -32,18 +28,21 @@ defaults write /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.screen
 systemsetup -setremoteappleevents off
 
 # disable internet sharing
-/usr/libexec/PlistBuddy -c "Delete :NAT:AirPort:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
-/usr/libexec/PlistBuddy -c "Add :NAT:AirPort:Enabled bool false" /Library/Preferences/SystemConfiguration/com.apple.nat.plist
-/usr/libexec/PlistBuddy -c "Delete :NAT:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
-/usr/libexec/PlistBuddy -c "Add :NAT:Enabled bool false" /Library/Preferences/SystemConfiguration/com.apple.nat.plist
-/usr/libexec/PlistBuddy -c "Delete :NAT:PrimaryInterface:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
-/usr/libexec/PlistBuddy -c "Add :NAT:PrimaryInterface:Enabled bool false" /Library/Preferences/SystemConfiguration/com.apple.nat.plist
+# /usr/libexec/PlistBuddy -c "Delete :NAT:AirPort:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
+# /usr/libexec/PlistBuddy -c "Add :NAT:AirPort:Enabled bool false" /Library/Preferences/SystemConfiguration/com.apple.nat.plist
+# /usr/libexec/PlistBuddy -c "Delete :NAT:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
+# /usr/libexec/PlistBuddy -c "Add :NAT:Enabled bool false" /Library/Preferences/SystemConfiguration/com.apple.nat.plist
+# /usr/libexec/PlistBuddy -c "Delete :NAT:PrimaryInterface:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
+# /usr/libexec/PlistBuddy -c "Add :NAT:PrimaryInterface:Enabled bool false" /Library/Preferences/SystemConfiguration/com.apple.nat.plist
 
 # disable screen sharing and remote management
-/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -access -off
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
 
 # disable print sharing
 /usr/sbin/cupsctl --no-share-printers
+/usr/sbin/cupsctl --no-remote-admin
+/usr/sbin/cupsctl --no-remote-any
 
 # disable remote login
 systemsetup -f -setremotelogin off
@@ -59,7 +58,7 @@ pmset -a womp 0
 spctl --master-enable
 
 # enable firewall
-defaults write /Library/Preferences/com.apple.alf globalstate -int 2
+sudo -u "$currentUser" defaults write /Library/Preferences/com.apple.alf globalstate -int 2
 
 # enable firewall stealth mode (don't respond to ping, etc)
 /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
@@ -74,12 +73,13 @@ defaults write /Library/Preferences/com.apple.alf globalstate -int 2
 /usr/libexec/ApplicationFirewall/socketfilterfw --setallowsignedapp off
 
 # restart firewall
-pkill -HUP socketfilterfw
+sudo pkill -HUP socketfilterfw
 
 # disable bonjour advertising service
-defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
+sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 
 # ensure nfs server is not running
+nfsd stop
 nfsd disable
 
 # secure home folders
@@ -143,7 +143,7 @@ defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled -bo
 defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool no
 defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool no
 
-# remote guest home folder
+# remove guest home folder
 rm -rf /Users/Guest
 
 # turn on filename extensions
