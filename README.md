@@ -1,4 +1,6 @@
-# macbook
+# mac
+
+This will provision macOS, configure better defaults, and remove unused applications
 
 ## Before
 
@@ -26,9 +28,8 @@ export MAC_LOCKSCREEN=
 ansible-playbook -vvv playbooks/home.yml --ask-become-pass --extra-vars=@vars/config.yml
 ansible-playbook -vvv playbooks/work.yml --ask-become-pass --extra-vars=@vars/config.yml
 
-# Preferences only
-ansible-playbook -vvv playbooks/home.yml --ask-become-pass --extra-vars=@vars/config.yml --start-at-task="Set OS X defaults"
-
+# Security
+ansible-playbook -vvv playbooks/security.yml --ask-become-pass
 ```
 
 ### Required post install steps
@@ -55,26 +56,17 @@ curl -L https://raw.githubusercontent.com/andrewtchin/ansible-common/master/dotf
 - Edit `about:config` `network.http.sendRefererHeader`
   - 0 = never send the header
 
-## Running standalone playbook
 
-```bash
-source ansible/hacking/env-setup
+## Set Defaults
 
-# Provision
-# This will provision MacOS, configure better defaults, and remove unused applications
-ansible-playbook -vvv playbooks/provision.yml --ask-become-pass --extra-vars=@vars/config.yml
-
-# Security
-# This will configure extra security features of MacOS
-ansible-playbook -vvv playbooks/security.yml --ask-become-pass
-```
-
-Follow post install steps
-
-## Defaults (`system-config` role) only
+Runs `system-config` role
 
 ```bash
 ansible-playbook -vvv playbooks/defaults.yml --ask-become-pass --extra-vars=@vars/config.yml
+
+or
+
+ansible-playbook -vvv playbooks/home.yml --ask-become-pass --extra-vars=@vars/config.yml --start-at-task="Set OS X defaults"
 ```
 
 ## Security
@@ -82,7 +74,3 @@ ansible-playbook -vvv playbooks/defaults.yml --ask-become-pass --extra-vars=@var
 MacOS hardening according to CIS. The security playbook will apply a custom configuration of security-related OS configuration.
 
 Its core is based off of [CIS for macOS Sierra](https://github.com/jamfprofessionalservices/CIS-for-macOS-Sierra-CP).
-
-```bash
-ansible-playbook -vvv playbooks/security.yml --ask-become-pass
-```
