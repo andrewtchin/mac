@@ -304,7 +304,7 @@ echo "Setting screenshot format to JPG"
 defaults write com.apple.screencapture type -string "jpg"
 
 echo ""
-echo "Setting screenshot format to JPG"
+echo "Disable screenshot thumbnail"
 defaults write com.apple.screencapture show-thumbnail -bool false
 
 echo ""
