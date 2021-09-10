@@ -150,20 +150,6 @@ echo "Disable Autogather"
 defaults write com.apple.appleseed.FeedbackAssistant "Autogather" -bool "false" 
 
 echo ""
-echo "Disable QuickLook"
-sudo rm -rfv "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
-sudo mkdir -p "/Users/$CURRENT_USER/Library/Application Support/Quick Look/*"
-sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
-sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Application Support/Quick Look"
-
-echo ""
-echo "Disable saved application state"
-sudo rm -rfv "/Users/$CURRENT_USER/Library/Saved Application State/*"
-sudo mkdir -p "/Users/$CURRENT_USER/Library/Saved Application State/*"
-sudo chmod -R 000 "/Users/$CURRENT_USER/Library/Saved Application State/"
-sudo chflags -R uchg "/Users/$CURRENT_USER/Library/Saved Application State/"
-
-echo ""
 echo "Disable Siri analytics"
 sudo rm -rfv /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
 sudo mkdir -p /Users/$CURRENT_USER/Library/Assistant/SiriAnalytics.db
