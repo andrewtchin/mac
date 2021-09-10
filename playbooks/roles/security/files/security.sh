@@ -4,25 +4,15 @@
 currentUser="$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')"
 
 # enable auto update
-defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # enable app auto update
-defaults write /Library/Preferences/com.apple.commerce AutoUpdate -bool true
-defaults write /Library/Preferences/com.apple.commerce AutoUpdateRestartRequired -bool true
+defaults write com.apple.commerce AutoUpdate -bool true
+defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 # enable system data files and security update installs
-defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInstall -bool true
-defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
-
-# turn off bluetooth if no paired devices exist
-connectable="$( system_profiler SPBluetoothDataType | grep Connectable | awk '{print $2}' | head -1 )"
-if [ "$connectable" = "Yes" ]; then
-    defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -bool false
-    killall -HUP blued
-fi
-
-# show bluetooth status in menubar
-open "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+defaults write com.apple.SoftwareUpdate ConfigDataInstall -bool true
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
 # enable set time and date automatically
 systemsetup -setusingnetworktime on
@@ -31,8 +21,8 @@ systemsetup -setusingnetworktime on
 cp /etc/ntp-restrict.conf /etc/ntp-restrict_old.conf
 echo -n "restrict lo interface ignore wildcard interface listen lo" >> /etc/ntp-restrict.conf
 
-# enable screensaver after 20 minutes of inactivity
-defaults write /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.screensaver."$hardwareUUID".plist idleTime -int 1200
+# enable screensaver after 10 minutes of inactivity
+defaults write /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.screensaver."$hardwareUUID".plist idleTime -int 600
 
 #
 # OS Security
@@ -89,9 +79,6 @@ pkill -HUP socketfilterfw
 # disable bonjour advertising service
 defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 
-# show wifi status in the menu bar
-open "/System/Library/CoreServices/Menu Extras/AirPort.menu"
-
 # ensure nfs server is not running
 nfsd disable
 
@@ -132,7 +119,8 @@ defaults write /Users/"$currentUser"/Library/Preferences/com.apple.security.revo
 dscl . -create /Users/root UserShell /usr/bin/false
 
 # password on wake from sleep or screensaver
-defaults write /Users/"$currentUser"/Library/Preferences/com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # require admin password to access system-wide preferences
 security authorizationdb read system.preferences > /tmp/system.preferences.plist
