@@ -55,7 +55,7 @@ sudo systemsetup -f -setremotelogin off
 sudo pmset -a womp 0
 
 # enable gatekeeper
-spctl --master-enable
+sudo spctl --master-enable
 
 # enable firewall
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 2
@@ -154,5 +154,5 @@ pkill -u "$currentUser" Finder
 defaults write /Users/"$currentUser"/Library/Preferences/com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # reduce sudo timeout period
-echo "Defaults timestamp_timeout=0" >> /etc/sudoers
+echo "Defaults timestamp_timeout=2" | sudo tee -a /etc/sudoers
 
