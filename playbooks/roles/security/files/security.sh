@@ -25,7 +25,7 @@ defaults write /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.screen
 #
 
 # disable remote apple events
-systemsetup -setremoteappleevents off
+sudo systemsetup -setremoteappleevents off
 
 # disable internet sharing
 # /usr/libexec/PlistBuddy -c "Delete :NAT:AirPort:Enabled"  /Library/Preferences/SystemConfiguration/com.apple.nat.plist
@@ -45,14 +45,14 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
 /usr/sbin/cupsctl --no-remote-any
 
 # disable remote login
-systemsetup -f -setremotelogin off
+sudo systemsetup -f -setremotelogin off
 
 # disable bluetooth sharing
 /usr/libexec/PlistBuddy -c "Delete :PrefKeyServicesEnabled"  /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.Bluetooth."$hardwareUUID".plist
 /usr/libexec/PlistBuddy -c "Add :PrefKeyServicesEnabled bool false"  /Users/"$currentUser"/Library/Preferences/ByHost/com.apple.Bluetooth."$hardwareUUID".plist
 
 # don't wake for network access
-pmset -a womp 0
+sudo pmset -a womp 0
 
 # enable gatekeeper
 spctl --master-enable
@@ -82,7 +82,7 @@ sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMultica
 sudo nfsd stop
 sudo nfsd disable
 
-# # secure home folders
+#find /System -type d -perm -2 # secure home folders
 # IFS=$'\n'
 # for userDirs in $( find /Users -mindepth 1 -maxdepth 1 -type d -perm -1 | grep -v "Shared" | grep -v "Guest" ); do
 #     chmod -R og-rwx "$userDirs"
