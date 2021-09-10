@@ -58,7 +58,7 @@ pmset -a womp 0
 spctl --master-enable
 
 # enable firewall
-sudo -u "$currentUser" defaults write /Library/Preferences/com.apple.alf globalstate -int 2
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 2
 
 # enable firewall stealth mode (don't respond to ping, etc)
 /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
@@ -79,29 +79,29 @@ sudo pkill -HUP socketfilterfw
 sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 
 # ensure nfs server is not running
-nfsd stop
-nfsd disable
+sudo nfsd stop
+sudo nfsd disable
 
-# secure home folders
-IFS=$'\n'
-for userDirs in $( find /Users -mindepth 1 -maxdepth 1 -type d -perm -1 | grep -v "Shared" | grep -v "Guest" ); do
-    chmod -R og-rwx "$userDirs"
-done
-unset IFS
-
-# make sure system wide apps have appropriate permissions
-IFS=$'\n'
-for apps in $( find /Applications -iname "*\.app" -type d -perm -2 ); do
-    chmod -R o-w "$apps"
-done
-unset IFS
-
-# check for world writeable files in /System
-IFS=$'\n'
-for sysPermissions in $( find /System -type d -perm -2 | grep -v "Public/Drop Box" ); do
-    chmod -R o-w "$sysPermissions"
-done
-unset IFS
+# # secure home folders
+# IFS=$'\n'
+# for userDirs in $( find /Users -mindepth 1 -maxdepth 1 -type d -perm -1 | grep -v "Shared" | grep -v "Guest" ); do
+#     chmod -R og-rwx "$userDirs"
+# done
+# unset IFS
+# 
+# # make sure system wide apps have appropriate permissions
+# IFS=$'\n'
+# for apps in $( find /Applications -iname "*\.app" -type d -perm -2 ); do
+#     chmod -R o-w "$apps"
+# done
+# unset IFS
+# 
+# # check for world writeable files in /System
+# IFS=$'\n'
+# for sysPermissions in $( find /System -type d -perm -2 ); do
+#     chmod -R o-w "$sysPermissions"
+# done
+# unset IFS
 
 # automatically lock login keychain for inactivity
 # security set-keychain-settings -u -t 21600s /Users/"$currentUser"/Library/Keychains/login.keychain
@@ -123,12 +123,12 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # require admin password to access system-wide preferences
-security authorizationdb read system.preferences > /tmp/system.preferences.plist
+sudo security authorizationdb read system.preferences > /tmp/system.preferences.plist
 /usr/libexec/PlistBuddy -c "Set :shared false" /tmp/system.preferences.plist
-security authorizationdb write system.preferences < /tmp/system.preferences.plist
+sudo security authorizationdb write system.preferences < /tmp/system.preferences.plist
 
 # disable ability to login to another user's active and locked session
-/usr/bin/security authorizationdb write system.login.screensaver "use-login-window-ui"
+sudo security authorizationdb write system.login.screensaver "use-login-window-ui"
 
 # disable fast user switching
 defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool false
