@@ -45,7 +45,7 @@
     mode: 0700
   with_items:
     - "{{ homedir_directories }}"
-  when: homedir_directories|bool
+  when: homedir_directories is defined
 
 
 - name: Make work directories in home
@@ -55,4 +55,4 @@
     mode: 0700
   with_items:
     - "{{ homedir_directories_work }}"
-  when: homedir_directories_work|bool
+  when: homedir_directories_work is defined
