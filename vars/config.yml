@@ -43,6 +43,7 @@ homebrew_installed_packages:
   - vim
   - watch
   - wget
+  - wireguard-tools
   - ykman
   - youtube-dl
   - yubikey-personalization
