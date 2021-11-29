@@ -97,15 +97,14 @@ homebrew_cask_apps_work:
 homedir_directories:
   - "/Users/{{ ansible_user_id }}/src"
   - "/Users/{{ ansible_user_id }}/src/sandbox"
-  - "/Users/{{ ansible_user_id }}/src/github.com"
-  - "/Users/{{ ansible_user_id }}/src/gitlab.com"
+  - "/Users/{{ ansible_user_id }}/src/github.com/andrewtchin"
+  - "/Users/{{ ansible_user_id }}/src/gitlab.com/andrewtchin"
 
 homedir_directories_work:
   - "/Users/{{ ansible_user_id }}/src/github.com/procore"
 
 homedir_directories_home:
   - "/Users/{{ ansible_user_id }}/src/gitlab.chinter.net"
-  - "/Users/{{ ansible_user_id }}/sync/common"
+  - "/Users/{{ ansible_user_id }}/sync"
   - "/Users/{{ ansible_user_id }}/sync/common/credentials/1password"
   - "/Users/{{ ansible_user_id }}/sync/personal"
-  - "/Users/{{ ansible_user_id }}/sync/{{ host_name }}"
